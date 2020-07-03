@@ -86,7 +86,7 @@
                   this.$message.error('登录失败，用户名或密码错误！');
                 }
             }).catch((error=>{
-
+                console.log(error.data)
             }))
          },
          onSubmitMessage(){
