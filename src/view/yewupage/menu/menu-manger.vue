@@ -76,7 +76,7 @@
         },
       activated() {
           //初始化数据
-          this.$axios.post("http://localhost:10000/user/service/menu/getMenuList").then((response)=>{
+          this.$axios.post(this.$gloableData.serverPath+"user/service/menu/getMenuList").then((response)=>{
             //获取菜单数据
             this.tableData=response.data.result;
           }).catch((error)=>{

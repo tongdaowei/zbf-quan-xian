@@ -60,7 +60,7 @@
         },
         activated() {
           let userId=JSON.parse(window.localStorage.getItem("userInfo")).userId;
-          this.$axios.post("http://localhost:10000/sso/auth/auth/getAuthMenu",{userId:userId}).then((response)=>{
+          this.$axios.post(this.$gloableData.serverPath+"sso/auth/auth/getAuthMenu",{userId:userId}).then((response)=>{
             //存储菜单信息
             this.$data.listMenu=response.data.result;
           }).catch((error)=>{

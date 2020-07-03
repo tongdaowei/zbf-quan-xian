@@ -36,7 +36,7 @@
         methods:{
           getRoleData(roleId){
             //初始化数据
-            this.$axios.post("http://localhost:10000/user/service/menu/getRoleMenuList?roleId="+roleId).then((response)=>{
+            this.$axios.post(this.$gloableData.serverPath+"user/service/menu/getRoleMenuList?roleId="+roleId).then((response)=>{
               //获取菜单数据
               this.data=response.data.result.allMenus;
               this.defaultChecked=response.data.result.roleMenuId;

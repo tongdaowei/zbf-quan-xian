@@ -70,7 +70,7 @@
         },
        methods:{
          onSubmit(){
-            this.$axios.post("http://localhost:10000/sso/auth/login",this.$data.form).then((response)=>{
+            this.$axios.post(this.$gloableData.serverPath+"sso/auth/login",this.$data.form).then((response)=>{
                 if(response.data.code==0){
                   //存储Token到本地
                   window.localStorage.removeItem("token")
