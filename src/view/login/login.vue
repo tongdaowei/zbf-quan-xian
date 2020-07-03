@@ -94,7 +94,7 @@
 
          },
          getMessageCode(){
-           alert("=====")
+           alert("==改版一下===")
          },
          toRegister(){
            this.$router.push("/register")
