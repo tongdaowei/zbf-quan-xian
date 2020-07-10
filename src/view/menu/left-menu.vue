@@ -1,17 +1,19 @@
 <template>
-    <div style="width: 100%;height: 100%">
-      <el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">
+    <div :style="{height:wheight+'px','background-color':'#ffebcd'}">
+      <!--<el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">
         <el-radio-button :label="false">展开</el-radio-button>
         <el-radio-button :label="true">收起</el-radio-button>
-      </el-radio-group>
+      </el-radio-group>-->
 
       <el-menu class="el-menu-vertical-demo"
+               ref="emenu"
                @open="handleOpen"
                @close="handleClose"
                :collapse="isCollapse"
                background-color="#545c64"
                text-color="#fff"
                active-text-color="#ffd04b"
+               :style="{height:wheight+'px'}"
       >
 
         <el-submenu :title="m1.menuName" v-for="(m1,mindex) in listMenu" :key="mindex" :index="getIndex(m1.code)">
@@ -35,6 +37,7 @@
         name: "left-menu",
         data() {
           return {
+            wheight:window.innerHeight-60,
             isCollapse: true,
             listMenu: [],
             userId: this.$store.state.userId
@@ -53,6 +56,19 @@
           },
           getIndex(index){
              return ""+index.toString();
+          },
+          openClose(){
+            if(this.$refs.emenu.collapse){
+              this.$data.isCollapse=false;
+              //调用父组件的方法，更改变量值
+              this.$emit("ee",false)
+
+            }else{
+              this.$data.isCollapse=true;
+              //调用父组件的方法，更改变量值
+              this.$emit("ee",true)
+
+            }
           }
         },
         mounted() {
@@ -66,6 +82,10 @@
           }).catch((error)=>{
             console.log("菜单错误=》"+JSON.stringify(error))
           })
+
+
+
+
         }
     }
 </script>
