@@ -88,13 +88,15 @@
                   //存储Token到本地
                   window.localStorage.removeItem("token")
                   window.localStorage.setItem("token",response.data.token)
-                  //跳转到home界面
-                  this.$router.push("/home")
+
                   //存储用户信息
-                  let uuid=""+response.data.userInfo.userId;
+                  let uuid=response.data.userInfo.userId;
                   this.$store.state.userId=uuid;
                   window.localStorage.setItem("userInfo",JSON.stringify(response.data.userInfo))
                   window.localStorage.setItem("userId",response.data.userInfo.id)
+
+                  //跳转到home界面
+                  this.$router.push("/home")
                 }else{
                   this.$message.error('登录失败，用户名或密码错误！');
                 }
