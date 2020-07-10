@@ -36,11 +36,13 @@
 
           },
           updateDataTab(){
-            //刷新数据
-            this.$refs.update.changeUpdateTab()
-            this.$refs.add.changeAddTab()
-            this.$refs.delete.changeDeleteTab()
 
+            this.$nextTick(()=>{
+              //刷新数据
+              this.$refs.update.changeUpdateTab()
+              this.$refs.add.changeAddTab()
+              this.$refs.delete.changeDeleteTab()
+            })
           }
         }
     }
