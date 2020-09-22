@@ -1,5 +1,6 @@
 <template>
 
+  <div :style="divimg">
    <div style="width: 100%">
 
      <div style="float: left;width: 20%;height: 300px">
@@ -18,6 +19,7 @@
      </div>
 
    </div>
+  </div>
 
 </template>
 
@@ -31,7 +33,15 @@
         components:{getPass,updatePass,updateOk},
         data(){
           return{
-            active: 1
+            active: 1,
+              divimg: { //背景图片的使用
+                  backgroundImage: "url(" + require('../../assets/2020124.jpg') + ")",
+                  backgroundRepeat: "no-repeat",
+                  height: "100%",
+                  width: "100%",
+                  overflow: "hidden",
+                  backgroundSize: "cover"
+              },
           }
         },
         methods:{

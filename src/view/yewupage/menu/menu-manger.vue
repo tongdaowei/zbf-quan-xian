@@ -6,48 +6,42 @@
         :highlight-current-row="heighLight"
         :stripe= "stripe"
         :data="tableData"
-        style="width: 100%;margin-bottom: 20px;"
+        style="width: 100%;margin-bottom: 30px;"
         row-key="id"
         border
-        :tree-props="{children: 'listMenu'}"
-         ref="treeTab"
-        >
+        :tree-props="{children: 'list'}">
+
 
         <el-table-column
           prop="id"
           label="菜单ID"
-          sortable
-          width="220">
+          width="220px"
+          sortable>
         </el-table-column>
         <el-table-column
           prop="leval"
-          label="菜单等级"
-          width="80">
+          label="菜单等级">
         </el-table-column>
         <el-table-column
           prop="menuName"
-          label="菜单名称"
-          width="160">
+          label="菜单名称">
         </el-table-column>
         <el-table-column
           prop="url"
-          label="权限URL"
-          width="180" >
+          label="权限URL">
         </el-table-column>
         <el-table-column
           prop="imagePath"
-          label="菜单图片ICON"
-          width="160" >
+          label="菜单图片ICON">
         </el-table-column>
         <el-table-column
           prop="code"
           label="当前CODE"
-          width="160" >
+          width="180px">
         </el-table-column>
         <el-table-column
           prop="parentCode"
-          label="父菜单CODE"
-          width="160" >
+          label="父菜单CODE">
         </el-table-column>
       </el-table>
 
@@ -74,16 +68,13 @@
             filterText:""
           }
         },
-      activated() {
-          //初始化数据
-          this.$axios.post(this.$gloableData.serverPath+"user/service/menu/getMenuList").then((response)=>{
-            //获取菜单数据
-            this.tableData=response.data.result;
-          }).catch((error)=>{
-            console.log("menu-manger=>"+error.toString())
-          })
-      },
+
       methods:{
+        list(){
+            this.$axios.get("http://localhost:10002/menu/selectMenu").then(res=>{
+                this.tableData=res.data;
+            })
+        },
         handleClose(done) {
           this.$confirm('确认关闭？')
             .then(_ => {
@@ -99,6 +90,9 @@
            //调用刷新tab页
            this.$refs.menuManger.updateDataTab()
         }
+      },
+      created() {
+           this.list();
       }
     }
 </script>
@@ -109,5 +103,17 @@
     font-size: 18px;
     color: #303133;
     float: left;
+  }
+  .demo-table-expand {
+    font-size: 0;
+  }
+  .demo-table-expand label {
+    width: 90px;
+    color: #99a9bf;
+  }
+  .demo-table-expand .el-form-item {
+    margin-right: 0;
+    margin-bottom: 0;
+    width: 50%;
   }
 </style>

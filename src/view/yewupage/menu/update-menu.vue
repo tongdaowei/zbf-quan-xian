@@ -58,7 +58,9 @@
             this.$data.form=this.$store.state.menuInfo;
           },
           submitUpdate(){
+              this.$axios.post("http://localhost:10002/menu/updateMenu",this.form).then((response)=>{
 
+              }).catch((error)=>{})
           }
         },
         activated() {

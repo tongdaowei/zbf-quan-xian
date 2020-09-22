@@ -38,7 +38,7 @@
       </el-form-item>
 
       <el-form-item>
-        <el-button icon="el-icon-delete" type="danger">删除</el-button>
+        <el-button icon="el-icon-delete" type="danger" @click="submitDelete">删除</el-button>
         <el-button icon="el-icon-close" >取消</el-button>
       </el-form-item>
 
@@ -59,7 +59,12 @@
         methods:{
           changeDeleteTab(){
              this.$data.form=this.$store.state.menuInfo
-          }
+          },
+          submitDelete(){
+              this.$axios.post("http://localhost:10002/menu/deleteMenu",this.form).then((response)=>{
+
+              }).catch((error)=>{})
+          },
         }
     }
 </script>

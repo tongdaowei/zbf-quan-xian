@@ -22,13 +22,15 @@
         name: "register-ok",
         methods:{
           toNext(){
+              //下一步
             this.$emit("TT")
           },
-          toMailBox(){//进入邮箱
+          toMailBox(){
+             //进入邮箱
              let from=this.$store.state.registerInfo
              let mailes=this.$gloableData.mailBox;
              //转小写
-             let yyy=from.mail.toLowerCase().split("@")[1]
+             let yyy=from.email.toLowerCase().split("@")[1]
              let href=mailes[yyy]
              //打开邮箱连接
              window.open(href)

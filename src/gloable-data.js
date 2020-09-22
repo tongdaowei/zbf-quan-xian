@@ -1,7 +1,7 @@
 //用户数据
 const quanXianLeval=[{label:"一级",value:1},{label:"二级",value:2},{label:"三级",value:3},{label:"四级",value:4}]
 
-const serverPath="http://localhost:11000/"
+const serverPath="http://localhost:10000/"
 
 //邮箱
 const mailBox={'qq.com': 'http://mail.qq.com', 'gmail.com': 'http://mail.google.com', 'sina.com': 'http://mail.sina.com.cn',

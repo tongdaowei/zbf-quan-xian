@@ -31,7 +31,7 @@
       </el-form-item>
 
       <el-form-item>
-        <el-button icon="el-icon-circle-plus" type="primary">添加保存</el-button>
+        <el-button icon="el-icon-circle-plus" type="primary" @click="saveMenu">添加保存</el-button>
         <el-button icon="el-icon-close" >取消</el-button>
       </el-form-item>
 
@@ -67,11 +67,18 @@
                this.$data.isShow=true
              }
           },
-          changeAddTab(){//用来刷新缓存的数据
+          changeAddTab(){
+            //用来刷新缓存的数据
             this.$data.form.parentCode=this.$store.state.menuInfo.code
             this.$data.form.parentName=this.$store.state.menuInfo.menuName
             this.$data.form.parentId=this.$store.state.menuInfo.id
             this.$data.form.leval=this.$store.state.menuInfo.leval+1
+          },
+          saveMenu(){
+            //保存菜单信息
+            this.$axios.post("http://localhost:10002/menu/addMenu",this.form).then((response)=>{
+
+            }).catch((error)=>{})
           }
         }
     }

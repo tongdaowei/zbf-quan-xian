@@ -4,7 +4,7 @@
 
       <el-form ref="form" :model="form" label-width="80px" style="width: 100%">
         <el-form-item label="联系方式">
-          <el-input placeholder="请输入手机号/邮箱地址" v-model="form.telMail"></el-input>
+          <el-input placeholder="请输入手机号/邮箱" v-model="form.telMail"></el-input>
         </el-form-item>
         <el-form-item label="验证码">
           <el-input placeholder="请输入内容" v-model="form.code" >
@@ -34,7 +34,22 @@
         methods:{
           toNext(){
             this.$emit("YY")
-          }
+          },
+          getMessageCode(){
+              // 发送验证码
+              this.$axios.get(this.$gloableData.serverPath+"auth/yan",{
+                  params:{
+                      tel:this.$data.form.telMail
+                  }}).then(res=>{
+                  console.log(res);
+                  console.log("赋值----",this.yz);
+              });
+              this.$notify({
+                  title: '成功',
+                  message: '验证码发送成功，请您注意查看！！',
+                  type: 'success'
+              });
+          },
         }
     }
 </script>
